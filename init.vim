@@ -20,6 +20,7 @@ Plug 'flazz/vim-colorschemes'
 
 " Utility
 Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf'
 Plug 'moll/vim-bbye'
 Plug 'tpope/vim-surround'
@@ -40,6 +41,8 @@ Plug 'StanAngeloff/php.vim'
 Plug 'arnaud-lb/vim-php-namespace'
 
 " Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'leshill/vim-json'
 Plug 'wokalski/autocomplete-flow'
 " For func argument completion
 Plug 'Shougo/neosnippet'
@@ -75,6 +78,9 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
 let g:deoplete#ignore_sources.php = ['omni']
 
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+
 " Trigger startify in every tab
 if has('nvim')                                                                                                                      
 	autocmd TabNewEntered * Startify                                                                                        
@@ -97,4 +103,4 @@ let g:startify_lists = [
           \ { 'type': 'sessions',  'header': ['   Sessions']       },
           \ { 'type': 'commands',  'header': ['   Commands']       },
 	  \ ]
-let g:startify_bookmarks	= ['~/.config/nvim/init.vim', '/mnt/c/Projects/sysadmin']
+let g:startify_bookmarks	= ['~/.config/nvim/init.vim', '~/Projects/bitbucket/sysadmin']
