@@ -11,6 +11,12 @@ noremap <C-up> :tabnew<CR>
 noremap <C-left> :tabprevious<CR>
 noremap <C-right> :tabnext<CR>
 
+" copy and paste
+inoremap <C-v> <ESC>"+pa
+vnoremap <C-v> "+pa
+vnoremap <C-c> "+y
+vnoremap <C-d> "+d
+
 """""""""""""""""""""""""""""""""
 " Pluggins
 """""""""""""""""""""""""""""""""
