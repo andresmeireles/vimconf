@@ -31,7 +31,9 @@ Plug 'junegunn/fzf'
 Plug 'moll/vim-bbye'
 Plug 'tpope/vim-surround'
 Plug 'Townk/vim-autoclose'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'enricobacis/vim-airline-clock'
 Plug 'ryanoasis/vim-devicons'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -72,11 +74,14 @@ inoremap <C-n> <ESC>:NERDTreeToggle<CR>
 
 nnoremap <Leader>q :Bdelete<CR>
 
-" lightline
-set laststatus=2
-let g:lightline = { 'colorscheme': 'deus' }
+"statusline
 set noshowmode
-"show open buffers
+
+" airline-theme
+let g:airline_theme='deus'
+
+" vim-airline_clock
+
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
