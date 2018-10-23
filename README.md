@@ -6,7 +6,7 @@ Requisitos
 ----------
 
 * Vim8 ou Neovim :)
-* [git][3]
+* [git][4]
 * [vim-plug][2]
 * [PHP Composer][3]
 
@@ -34,3 +34,8 @@ Para vim
 * excutar comando `PlugInstall`
 * para que o deplete funcione corretamente, é nescessário baixar o pacote `neovim` com o gerencidor de pacotes `pip3` do python 3, estranhamente comigo esse passo funciona apenas em sistemas baseados no ubuntu.
 * correr para o abraço :)
+
+[1]: https://neovim.io/
+[2]: https://github.com/junegunn/vim-plug
+[3]: https://getcomposer.org/
+[4]: https://git-scm.com/
