@@ -6,21 +6,48 @@ set encoding=utf8
 set number
 set timeoutlen=50
 
-" tabs configuration
-noremap <C-up> :tabnew<CR>
-noremap <C-left> :tabprevious<CR>
-noremap <C-right> :tabnext<CR>
+" enable mouse
+set mouse=a
 
-" copy and paste
-inoremap <C-v> <ESC>"+pa
-vnoremap <C-v> "+pa
+" disable compatible mode
+if &compatible
+    set nocompatible
+endif
+
+" tabs configuration
+nnoremap <C-up> :bnew<CR>
+nnoremap <C-left> :bprevious<CR>
+nnoremap <C-right> :bnext<CR>
+
+" tabs spaces
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+
+" all copy content go to clipboard
 vnoremap <C-c> "+y
-vnoremap <C-d> "+d
+vnoremap <C-v> "+p
+nnoremap <C-v> "+p
+
+if exists("g:did_load_filetypes")
+  filetype off
+  filetype plugin indent off
+endif
+
+nnoremap <C-q> :Bdelete<CR>
+
+"statusline
+set noshowmode
+set hidden
 
 """""""""""""""""""""""""""""""""
 " Pluggins
 """""""""""""""""""""""""""""""""
-call plug#begin('~/.config/nvim/plugged')
+if has('nvim')
+    call plug#begin('~/.config/nvim/plugged')
+else
+    call plug#begin('~/.vim/plugged')
+endif
 " themes
 Plug 'flazz/vim-colorschemes'
 
@@ -67,51 +94,12 @@ colorscheme molokai
 """""""""""""""""""""""""""""""""
 " Pluggins configuration
 """""""""""""""""""""""""""""""""
-
-"NERDTree
-map <C-n> :NERDTreeToggle<CR>
-inoremap <C-n> <ESC>:NERDTreeToggle<CR>
-
-nnoremap <Leader>q :Bdelete<CR>
-
-"statusline
-set noshowmode
-
-" airline-theme
-let g:airline_theme='deus'
-
-" vim-airline_clock
-
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-" phpcd deoplete
-let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-let g:deoplete#ignore_sources.php = ['omni']
-
-" vim-javascript
-let g:javascript_plugin_jsdoc = 1
-
-" Trigger startify in every tab
-if has('nvim')                                                                                                                      
-	autocmd TabNewEntered * Startify                                                                                        
+if has('nvim') 
+    for file in split(glob("~/.config/nvim/plugconf/*.vimconf"), '\n')
+       exe 'source' file
+    endfor
 else
-	autocmd VimEnter * let t:startify_new_tab = 1
-	autocmd BufEnter *                                                                                                          
-            \ if !exists('t:startify_new_tab') && empty(expand('%')) |                                                              
-            \   let t:startify_new_tab = 1 |                                                                                        
-            \   Startify |                                                                                                          
-	    \ endif                                                                                 
+    for file in split(glob("~/.vim/plugconf/*.vimconf"), '\n')
+       exe 'source' file
+    endfor
 endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Project Managment
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:startify_lists = [
-	  \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
-          \ { 'type': 'files',     'header': ['   MRU']            },
-          \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'commands',  'header': ['   Commands']       },
-	  \ ]
-let g:startify_bookmarks	= ['~/.config/nvim/init.vim', '~/Projects/bitbucket/sysadmin']
