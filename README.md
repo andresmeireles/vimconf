@@ -5,7 +5,7 @@ Meu setup para o vim/nvim, recomento o [Neovim][1] pois os plugins e documentaç
 Requisitos
 ----------
 
-* Vim8 ou Neovim :)
+* Vim8 ou [Neovim][1] :)
 * [git][4]
 * [vim-plug][2]
 * [PHP Composer][3]
@@ -13,11 +13,14 @@ Requisitos
 Instalação
 ----------
 
+Geral
+* **instalar vim-plug**
+* clonar ou baixar o repositorio no seu diretorio $HOME
+
+
 Para neovim
 
-* copiar pasta `plugconf` para pasta `~/.config/nvim`
 * copiar arquivo `init.vim` para pasta `~/.config/nvim`
-* criar pasta chamda `plugged` em `~/.config/nvim`
 * abrir neovim
 * excutar comando `PlugInstall`
 * correr para o abraço :)
@@ -27,12 +30,10 @@ Para vim
 
 **alguns plugins podem conter comportamento inesperado**
 
-* copiar pasta `plugconf` para pasta `~/.vim`
-* copiar arquivo `init.vim` para pasta `~/` alterando nome para `.vimrc` 
-* criar pasta chamda `plugged` em `~/.vim`
+* copiar arquivo `init.vim` para pasta `~/` alterando nome para `.vimrc`
 * abrir vim
 * excutar comando `PlugInstall`
-* para que o deplete funcione corretamente, é nescessário baixar o pacote `neovim` com o gerencidor de pacotes `pip3` do python 3, estranhamente comigo esse passo funciona apenas em sistemas baseados no ubuntu.
+* para que o deplete funcione corretamente, é nescessário baixar o pacote `neovim` com o gerencidor de pacotes `pip3` do python 3, estranhamente comigo esse passo funciona apenas em sistemas baseados no ubuntu/debian.
 * correr para o abraço :)
 
 [1]: https://neovim.io/
