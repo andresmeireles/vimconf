@@ -1,1 +1,5 @@
+#remove all file
 plugged/*
+
+# keep the folder
+!somefolder/.gitkeep
