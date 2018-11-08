@@ -43,11 +43,8 @@ set hidden
 """""""""""""""""""""""""""""""""
 " Pluggins
 """""""""""""""""""""""""""""""""
-if has('nvim')
-    call plug#begin('~/.config/nvim/plugged')
-else
-    call plug#begin('~/.vim/plugged')
-endif
+call plug#begin('~/vimconf/plugged')
+
 " themes
 Plug 'flazz/vim-colorschemes'
 
@@ -89,17 +86,11 @@ Plug 'mhinz/vim-startify'
 call plug#end()
 
 " themes
-colorscheme molokai
+" colorscheme molokai
 
 """""""""""""""""""""""""""""""""
 " Pluggins configuration
 """""""""""""""""""""""""""""""""
-if has('nvim') 
-    for file in split(glob("~/.config/nvim/plugconf/*.vimconf"), '\n')
-       exe 'source' file
-    endfor
-else
-    for file in split(glob("~/.vim/plugconf/*.vimconf"), '\n')
-       exe 'source' file
-    endfor
-endif
+for file in split(glob("~/vimconf/plugconf/*.vimconf"), '\n')
+  exe 'source' file
+endfor
