@@ -1,96 +1,84 @@
-"""""""""""""""""""""""""""""""""
-" General settings
-"""""""""""""""""""""""""""""""""
-syntax on
-set encoding=utf8
+"show numbers
 set number
-set timeoutlen=50
-
-" enable mouse
-set mouse=a
-
-" disable compatible mode
-if &compatible
-    set nocompatible
-endif
-
-" tabs configuration
-nnoremap <C-up> :bnew<CR>
-nnoremap <C-left> :bprevious<CR>
-nnoremap <C-right> :bnext<CR>
-
-" tabs spaces
+"set tab size
 set tabstop=4
-set softtabstop=0
 set shiftwidth=4
+set expandtab
 
-" all copy content go to clipboard
-vnoremap <C-c> "+y
-vnoremap <C-v> "+p
-nnoremap <C-v> "+p
+"shortcut for saveing
+map <C-s> <ESC>:w<CR>
+inoremap <C-s> <ESC>:w<CR>
 
-if exists("g:did_load_filetypes")
-  filetype off
-  filetype plugin indent off
-endif
-
-nnoremap <C-q> :Bdelete<CR>
-
-"statusline
-set noshowmode
-set hidden
-
-"""""""""""""""""""""""""""""""""
-" Pluggins
-"""""""""""""""""""""""""""""""""
-call plug#begin('~/vimconf/plugged')
-
-" themes
-Plug 'flazz/vim-colorschemes'
-
-" Utility
+call plug#begin('~/.config/nvim/plugged')
+"close brackets
+Plug 'jiangmiao/auto-pairs'
+"ident lines
+Plug 'thaerkh/vim-indentguides'
+"nerdtree
 Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/fzf'
-Plug 'moll/vim-bbye'
-Plug 'tpope/vim-surround'
-Plug 'Townk/vim-autoclose'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'enricobacis/vim-airline-clock'
-Plug 'ryanoasis/vim-devicons'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-" PHP Support
-Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
-Plug 'StanAngeloff/php.vim'
-Plug 'arnaud-lb/vim-php-namespace'
-
-" Javascript
+"status line
+Plug 'itchyny/lightline.vim'
+"autocomplete
+Plug 'Shougo/deoplete.nvim', {'do':':UpdateRemotePlugins'}
+Plug 'ternjs/tern_for_vim', { 'do': 'yarn global add tern' }
+Plug 'carlitux/deoplete-ternjs'
+"javscript syntax
 Plug 'pangloss/vim-javascript'
-Plug 'leshill/vim-json'
-Plug 'wokalski/autocomplete-flow'
-" For func argument completion
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-
-" Project 
-"Plug 'amiorin/vim-project'
-Plug 'mhinz/vim-startify'
+" Javascript lint
+Plug 'w0rp/ale'
+"colorschemes
+Plug 'flazz/vim-colorschemes'
 call plug#end()
 
-" themes
-" colorscheme molokai
+" Plugin Config
 
-"""""""""""""""""""""""""""""""""
-" Pluggins configuration
-"""""""""""""""""""""""""""""""""
-for file in split(glob("~/vimconf/plugconf/*.vimconf"), '\n')
-  exe 'source' file
-endfor
+"IDENTLINE
+
+"NERDTREE
+"shortcut to open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+"LIGHTLINE
+set noshowmode
+let g:lightline = {'colorscheme': 'one',}
+
+"DEOPLETE
+"start when open
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#max_abbr_width = 0
+let g:deoplete#max_menu_width = 0
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#command = ["tern"]
+let g:tern#arguments = [" — persistent"]
+"<TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+"Javascript Syntax
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
+
+" JS pretier
+autocmd FileType javascript set formatprg=prettier\ --stdin
+
+"ALE
+" Fix files with prettier, and then ESLint.
+let b:ale_fixers = ['prettier', 'eslint']
+" Equivalent to the above.
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
+" Enable completion where available.
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 1
+" when lint
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_change = 0
+
+" Colors
+colorscheme molokai
