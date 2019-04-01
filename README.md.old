@@ -17,14 +17,12 @@ Geral
 * **instalar vim-plug**
 * clonar ou baixar o repositorio no seu diretorio $HOME
 
-
 Para neovim
 
 * copiar arquivo `init.vim` para pasta `~/.config/nvim`
 * abrir neovim
 * excutar comando `PlugInstall`
 * correr para o abraço :)
-
 
 Para vim
 

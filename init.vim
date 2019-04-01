@@ -18,6 +18,12 @@ Plug 'thaerkh/vim-indentguides'
 Plug 'scrooloose/nerdtree'
 "status line
 Plug 'itchyny/lightline.vim'
+"surround https://github.com/tpope/vim-surround 
+Plug 'tpope/vim-surround'
+"gitgutter
+Plug 'airblade/vim-gitgutter'
+"multiple cursors
+Plug 'terryma/vim-multiple-cursors'
 "autocomplete
 Plug 'Shougo/deoplete.nvim', {'do':':UpdateRemotePlugins'}
 Plug 'ternjs/tern_for_vim', { 'do': 'yarn global add tern' }
@@ -28,6 +34,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'w0rp/ale'
 "colorschemes
 Plug 'flazz/vim-colorschemes'
+"startfy
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 " Plugin Config
@@ -36,7 +44,7 @@ call plug#end()
 
 "NERDTREE
 "shortcut to open NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <C-e> :NERDTreeToggle<CR>
 
 "LIGHTLINE
 set noshowmode
