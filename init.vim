@@ -44,7 +44,8 @@ call plug#end()
 
 "NERDTREE
 "shortcut to open NERDTree
-map <C-e> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
+inoremap <C-t> <ESC>:NERDTreeToggle<CR>
 
 "LIGHTLINE
 set noshowmode
